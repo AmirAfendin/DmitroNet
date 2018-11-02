@@ -1,11 +1,15 @@
 #include "neuron.h"
 #include <QDebug>
+#include <QtMath>
 
 Neuron::Neuron(int weightsCount)
 {
     for (int i = 0; i < weightsCount; ++i) {
-        m_weights << qrand() % (100 + 1) / 100.0f;
+        weights << qrand() % (100 + 1) / 100.0f;
     }
+}
 
-    qDebug() << m_weights;
+float Neuron::sigmoid(float x)
+{
+    return 1 / (1 + qExp(-x));
 }

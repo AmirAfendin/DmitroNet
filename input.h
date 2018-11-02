@@ -5,9 +5,9 @@
 class Input
 {
 public:
-    Input();
+    Input(){};
+    Input(int inValue, float inActivation);
 
-private:
     int value = 0;
     float activation = 0.0f;
 };

@@ -6,10 +6,10 @@
 class Layer
 {
 public:
-    Layer();
+    Layer(){};
+    Layer(int neuronCount);
 
-private:
-    QVector<Neuron> m_neurons;
+    QVector<Neuron> neurons;
 };
 
 #endif // LAYER_H
