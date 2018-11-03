@@ -15,6 +15,11 @@ signals:
 
 public slots:
     void dumpInfo();
+    void calculate();
+    float checkResult(int ideal, int epoch);
+
+    int m_epochs = 5000;
+    float m_learningRate = 0.05f;
 
 private:
     void buildLayers();

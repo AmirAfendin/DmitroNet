@@ -1,5 +1,6 @@
 #include "net.h"
 #include <QDebug>
+#include <QtMath>
 
 Net::Net(QVector<Input> inputs, QObject *parent)
     : QObject(parent)
@@ -26,9 +27,21 @@ void Net::dumpInfo()
         }
     }
 
-    qDebug() << "Right?: " << checkResult();
+//    qDebug() << "Right?: " << checkResult();
 
     qDebug() << "=========================================";
+}
+
+void Net::calculate()
+{
+
+}
+
+float Net::checkResult(int ideal, int epoch)
+{
+    float i = ideal;
+    float a;
+    float mse = qPow((i - a), 2.0f) / float(epoch);
 }
 
 void Net::buildLayers()

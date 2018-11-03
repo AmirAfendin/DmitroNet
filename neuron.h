@@ -9,9 +9,10 @@ public:
     Neuron(){};
     Neuron(int weightsCount);
 
+    float getActivation();
     float sigmoid(float x);
     QVector<float> weights;
-    QVector<float> factors;
+    QVector<float> activations;
 };
 
 #endif // NEURON_H
