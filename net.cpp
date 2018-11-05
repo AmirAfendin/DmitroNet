@@ -40,8 +40,9 @@ void Net::calculate()
 float Net::checkResult(int ideal, int epoch)
 {
     float i = ideal;
-    float a;
+    float a = m_layers.last().neurons.last().getActivation();
     float mse = qPow((i - a), 2.0f) / float(epoch);
+    return mse;
 }
 
 void Net::buildLayers()

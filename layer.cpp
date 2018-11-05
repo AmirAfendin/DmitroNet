@@ -6,3 +6,4 @@ Layer::Layer(int neuronCount)
         neurons << Neuron(neuronCount+1);
     }
 }
+
