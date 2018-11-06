@@ -20,7 +20,7 @@ void Net::dumpInfo()
     for (int i = 0; i < m_layers.count(); ++i) {
         qDebug() << "Layer №" << QString::number(i);
         for (int j = 0; j < m_layers[i].neurons.count(); ++j) {
-            qDebug() << "Hiden №" << QString::number(j)
+            qDebug() << "Neuron №" << QString::number(j)
                      << "activations:" << m_layers[i].neurons[j].activations
                      << "weights:" << m_layers[i].neurons[j].weights
                      << "\n";
@@ -34,14 +34,22 @@ void Net::dumpInfo()
 
 void Net::calculate()
 {
+    int resultValue = 0;
+    for (const Input &input : m_inputs) {
+        if (input.activation)
+            resultValue += input.value;
+    }
 
+    if (resultValue % 2)
+        checkResult(0.0f);
+    else
+        checkResult(1.0f);
 }
 
-float Net::checkResult(int ideal, int epoch)
+float Net::checkResult(float i)
 {
-    float i = ideal;
     float a = m_layers.last().neurons.last().getActivation();
-    float mse = qPow((i - a), 2.0f) / float(epoch);
+    float mse = qPow((i - a), 2.0f) / float(m_epochs);
     return mse;
 }
 
@@ -49,6 +57,6 @@ void Net::buildLayers()
 {
     m_layers.clear();
 
-    for (int i = 0; i < m_inputs.count() - 1; ++i)
+    for (int i = m_inputs.count() - 1; i > 0; --i)
         m_layers << Layer(i);
 }

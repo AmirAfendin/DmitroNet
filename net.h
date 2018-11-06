@@ -16,15 +16,14 @@ signals:
 public slots:
     void dumpInfo();
     void calculate();
-    float checkResult(int ideal, int epoch);
-
-    int m_epochs = 5000;
-    float m_learningRate = 0.05f;
+    float checkResult(float ideal);
 
 private:
     void buildLayers();
     QVector<Layer> m_layers;
     QVector<Input> m_inputs;
+    int m_epochs = 5000;
+    float m_learningRate = 0.05f;
 };
 
 #endif // NET_H
