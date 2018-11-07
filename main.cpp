@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
                               Input(3, 0.0f), Input(4, 0.0f)};
 
     Net net(inputs);
+    net.calculate();
     net.dumpInfo();
 
     QQmlApplicationEngine engine;

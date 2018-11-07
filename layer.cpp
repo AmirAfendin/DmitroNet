@@ -7,3 +7,14 @@ Layer::Layer(int neuronCount)
     }
 }
 
+QVector<float> Layer::getActivations()
+{
+    QVector<float> activaons;
+
+    for (Neuron &neuron : neurons) {
+        activaons << neuron.getActivation();
+    }
+
+    return activaons;
+}
+

@@ -8,6 +8,7 @@ class Layer
 public:
     Layer(){};
     Layer(int neuronCount);
+    QVector<float> getActivations();
 
     QVector<Neuron> neurons;
 };
