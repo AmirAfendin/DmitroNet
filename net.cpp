@@ -41,12 +41,12 @@ void Net::checkResult()
     }
 
     if (resultValue % 2)
-        checkError(0.0f);
+        checkMSE(0.0f);
     else
-        checkError(1.0f);
+        checkMSE(1.0f);
 }
 
-float Net::checkError(float i)
+float Net::checkMSE(float i)
 {
     float a = m_layers.last().neurons.last().getActivation();
     float mse = qPow((i - a), 2.0f) / float(m_epochs);
@@ -69,6 +69,25 @@ void Net::calculate()
                 neuron.activations = m_layers[i-1].getActivations();
         }
     }
+}
+
+void Net::train()
+{
+    float actual = m_layers.last().neurons.last().getActivation();
+    float expected;
+
+    int resultValue = 0;
+    for (const Input &input : m_inputs) {
+        if (input.activation)
+            resultValue += input.value;
+    }
+
+    if (resultValue % 2)
+        expected = 0.0f;
+    else
+        expected = 1.0f;
+
+
 }
 
 void Net::buildLayers()
