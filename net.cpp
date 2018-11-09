@@ -87,7 +87,11 @@ void Net::train()
     else
         expected = 1.0f;
 
+    float error = actual - expected;
+    float gradient = actual * (1 - actual);
+    float weights_delta = actual * gradient;
 
+    float weight_1 = weight_1 -
 }
 
 void Net::buildLayers()

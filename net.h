@@ -16,8 +16,9 @@ signals:
 public slots:
     void dumpInfo();
     void checkResult();
-    float checkError(float ideal);
+    float checkMSE(float ideal);
     void calculate();
+    void train();
 
 private:
     void buildLayers();
