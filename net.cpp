@@ -91,7 +91,11 @@ void Net::train()
     float gradient = actual * (1 - actual);
     float weights_delta = actual * gradient;
 
-    float weight_1 = weight_1 -
+    for (int i = m_layers.count() - 2; i >= 0; --i) {
+        for (Neuron &neuron : m_layers[i].neurons) {
+
+        }
+    }
 }
 
 void Net::buildLayers()
