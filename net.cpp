@@ -91,6 +91,15 @@ void Net::train()
     float gradient = actual * (1 - actual);
     float weights_delta = actual * gradient;
 
+    float weight_1 = m_layers.last().neurons.last().weights.first();
+    float weight_2 = m_layers.last().neurons.last().weights.last();
+
+    float output_1 = m_layers[(m_layers.count() - 2)].neurons.first().getActivation();
+    float output_2 = m_layers[(m_layers.count() - 2)].neurons.last().getActivation();
+
+    weight_1 = weight_1 - output_1 * weights_delta * m_learningRate;
+    weight_2 = weight_2 - output_2 * weights_delta * m_learningRate;
+
     for (int i = m_layers.count() - 2; i >= 0; --i) {
         for (Neuron &neuron : m_layers[i].neurons) {
 
