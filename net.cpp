@@ -100,9 +100,12 @@ void Net::train()
     weight_1 = weight_1 - output_1 * weights_delta * m_learningRate;
     weight_2 = weight_2 - output_2 * weights_delta * m_learningRate;
 
-    for (int i = m_layers.count() - 2; i >= 0; --i) {
-        for (Neuron &neuron : m_layers[i].neurons) {
+    m_layers.last().neurons.last().weights[0] = weight_1;
+    m_layers.last().neurons.last().weights[1] = weight_2;
 
+    for (int i = m_layers.count() - 2; i >= 0; --i) {
+        for (int j = 0; j < m_layers[i].neurons.count(); ++j) {
+            Neuron &neuron = m_layers[i].neurons[j];
         }
     }
 }
