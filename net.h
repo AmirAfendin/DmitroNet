@@ -1,15 +1,14 @@
-#ifndef NET_H
+﻿#ifndef NET_H
 #define NET_H
 
 #include <QObject>
 #include "layer.h"
-#include "input.h"
 
 class Net : public QObject
 {
     Q_OBJECT
 public:
-    explicit Net(QVector<Input> inputs, QObject *parent = nullptr);
+    explicit Net(QVector<int> values, QObject *parent = nullptr);
 
 signals:
 
@@ -23,7 +22,8 @@ public slots:
 private:
     void buildLayers();
     QVector<Layer> m_layers;
-    QVector<Input> m_inputs;
+    QVector<bool> m_inputs;
+    QVector<int> m_values;
     int m_epochs = 5000;
     float m_learningRate = 0.05f;
 };

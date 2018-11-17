@@ -11,10 +11,7 @@ int main(int argc, char *argv[])
     qsrand(QTime::currentTime().msec());
     QGuiApplication app(argc, argv);
 
-    QVector<Input> inputs = {Input(1, 0.0f), Input(2, 0.0f),
-                              Input(3, 0.0f), Input(4, 0.0f)};
-
-    Net net(inputs);
+    Net net({1, 2, 3, 4});
     net.calculate();
     net.dumpInfo();
 

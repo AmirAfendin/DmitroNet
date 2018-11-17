@@ -16,8 +16,7 @@ SOURCES += \
         main.cpp \
     net.cpp \
     neuron.cpp \
-    layer.cpp \
-    input.cpp
+    layer.cpp
 
 RESOURCES += qml.qrc
 
@@ -35,5 +34,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     net.h \
     neuron.h \
-    layer.h \
-    input.h
+    layer.h
